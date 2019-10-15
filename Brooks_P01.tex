@@ -1,0 +1,267 @@
+% ECE317 Project 01
+% Kai Brooks
+% Fall 2019
+
+% Document settings ------------------------------------------------
+\documentclass[a4paper,12pt]{article}
+
+\newcommand{\figOverlay}{\put(34,10){\color{black!50} \figWatermark}} % Figure overlay settings
+\newcommand{\figWatermark}{}%\small Brooks \today} 		% Figure overlay text
+\newcommand{\figHere}{\begin{overpic}[percent,scale=0.34]}	% Settings for all figures
+
+% Packages ------------------------------------------------
+
+\usepackage[USenglish]{babel} 	% American English
+\usepackage{blindtext}			% Generate latin crap
+\usepackage[yyyymmdd]{datetime} % Sets date format to ISO 8601 standard
+\renewcommand{\dateseparator}{-}% Sets date format to ISO 8601 standard
+
+\usepackage{graphicx}			% Image importing and display
+\graphicspath{ {images/} }		% Path to image folder
+\usepackage{xcolor}				% Allows normal color words
+\usepackage{color, colortbl}
+
+
+\usepackage{float}				% Adds 'H' for figure placement location
+\usepackage{enumitem}			% Use for QandA environment
+\usepackage{booktabs}			% Merging columns in tables
+
+\usepackage[nostamp]{draftwatermark}	% [nostamp][firstpage]
+\SetWatermarkText{DRAFT}
+\SetWatermarkColor{red!50}
+\SetWatermarkScale{3}
+
+
+\usepackage{overpic}				% Puts text over figures
+\usepackage[american]{circuitikz}	% American-style circuit diagrams
+
+\usepackage{amsmath}				% Multi-line equations
+\usepackage{caption}				% Equation caption formatting
+\usepackage{physics}				% Easier derivatives
+\usepackage{gensymb}				% Enable \degree for degree symbol
+
+\usepackage{array}					% Used for centering tabular data
+\newcolumntype{M}[1]{>{\centering\arraybackslash}p{#1}} % The actual centered column format
+
+\usepackage{listings} %For code in appendix
+
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{ltgray}{rgb}{0.937, 0.937, 0.956}	% Divide standard RGB values by 255 for some reason 
+
+\newenvironment{QandA}
+	{\begin{enumerate}[label=\arabic*.]\sl} % Use slanted question text and Arabic numerals
+  {\end{enumerate}}
+\newenvironment{answered}{\par\normalfont}{} % Paragraph break and use normal font
+
+
+% Title Page ------------------------------------------------
+\begin{document}
+\lstset { %Formatting for code in appendix
+  language=Matlab,
+  basicstyle=\footnotesize\ttfamily,
+  numbers=left,
+  stepnumber=1,
+  showstringspaces=false,
+  tabsize=1,
+  breaklines=true,
+  breakatwhitespace=false,
+  stringstyle=\color{mymauve},
+  keywordstyle=\color{blue},
+  commentstyle=\color{mygreen}, 
+}
+
+\begin{titlepage}
+	\begin{center}
+		\vspace*{1cm}
+
+		\huge\textsc{Project 01}
+
+		\vspace{0.5cm}
+		\small\textsc{ECE 317}
+		
+		\vspace{1.5cm}
+		\normalsize Kai Brooks
+		
+		\vspace{0.5cm}
+		Lab TA: N/A
+		
+		\vfill
+		\vspace{0.8cm}
+		
+		\includegraphics[width=0.5\textwidth]{images/psulogo_horiz_msword.tif}
+		
+		\vspace{0.5cm}
+		Electrical and Computer Engineering\\
+		Portland State University\\
+		\today
+		 
+	\end{center}
+\end{titlepage}
+
+% Table of contents ------------------------------------------------
+\newpage
+\tableofcontents
+
+
+% Begin paper ------------------------------------------------
+\newpage
+\pagenumbering{arabic}
+
+\section{Circuit 1}
+	\subsection{Circuit Diagram}
+	\begin{figure}[H]	 		
+			\centering
+	  	\label{fig:}
+	  	\figHere{images/01_circuit01.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Circuit}
+	\end{figure}
+	
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/01_parameters01.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Simulation Parameters}
+	\end{figure}
+	
+	\subsection{Output}
+	\begin{figure}[H]	 		
+			\centering
+	  	\label{fig:}
+	  	\figHere{images/01_waveform01.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Full waveform}
+	\end{figure}
+	
+	\begin{figure}[H]	 		
+			\centering
+	  	\label{fig:}
+	  	\figHere{images/01_zoom01.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Zoomed waveform}
+	\end{figure}
+	
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/01_comp01.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Comparitive waveform}
+	\end{figure}
+	
+	\subsection{Analysis}
+	\begin{table}[H]
+	\centering
+		\begin{tabular}{|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|} % Col width
+		\hline
+		\textbf{Peak Amplitude} & \textbf{Period} & \textbf{Pulse Width} & \textbf{Duty Ratio} \\ \hline
+		$10v$ & 10$\mu$s & 4$\mu$s & 0.4 \\ \hline
+		\end{tabular}						
+		\caption{Circuit 1 calculations}	
+	\end{table}
+	
+	\subsection*{Question}	
+	\textit{Taking the above plots into consideration, explain why you would expect to get the steady state value you found above?}
+	
+	\subsection*{Answer}
+	\begin{equation}
+	Steady\;State = Peak\;Amplitude\, \cdot \;Duty\; Ratio
+	\end{equation}
+	It is expected to get the steady state above as the peak voltage is $10v$ and the duty ratio is 0.4.
+	
+\section{Circuit 2}
+	\subsection{Circuit Diagram}
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/01_circuit02.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Circuit}
+	\end{figure}
+	
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/01_parameters02.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Simulation Parameters}
+	\end{figure}
+	
+	\subsection{Output}
+	\begin{figure}[H]	 		
+			\centering
+	  	\label{fig:}
+	  	\figHere{images/01_comp02.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Comparative waveform}
+	\end{figure}
+	
+	\subsection{Analysis}
+	\begin{table}[H]
+	\centering
+		\begin{tabular}{|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|} % Col width
+		\hline
+		\textbf{Peak Amplitude} & \textbf{Period} & \textbf{Pulse Width} & \textbf{Duty Ratio} \\ \hline
+		$10v$ & 10$\mu$s & 4$\mu$s & 0.4 \\ \hline
+		\end{tabular}						
+		\caption{Circuit 2 calculations}	
+	\end{table}
+	
+	\subsection*{Question}	
+	\textit{Given that $K_1 = -1$, what other factors in the circuit determines the peak amplitude and why?}
+	
+	\subsection*{Answer}
+	\begin{equation}
+	Steady\;State = Peak\;Amplitude\, \cdot \;Duty\; Ratio
+	\end{equation}
+	It is expected to get the steady state above as the peak voltage is $10v$ and the duty ratio is 0.4.
+	
+\section{Circuit 3}
+	\subsection{Circuit Diagram}
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/01_circuit03.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Circuit}
+	\end{figure}
+	
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/01_parameters03.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Simulation Parameters}
+	\end{figure}
+	
+	\subsection{Output}
+	\begin{figure}[H]	 		
+			\centering
+	  	\label{fig:}
+	  	\figHere{images/01_comp03.png} \figOverlay
+	  	\end{overpic}
+	  	\caption{Comparative waveform}
+	\end{figure}
+	
+	\subsection{Analysis}
+	\begin{table}[H]
+	\centering
+		\begin{tabular}{|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|} % Col width
+		\hline
+		& \textbf{Switching Frequency} & \textbf{Duty Ratio} & \textbf{Peak-to-peak Input Voltage to Filter} & \textbf{Steady State Average Output Voltage} & \textbf{Peak-to-peak Output Voltage Ripple} \\ \hline
+		\textbf{Circuit 1} & & & & & \\ \hline
+		\textbf{Circuit 3} & & & & & \\ \hline
+		\end{tabular}						
+		\caption{Comparitive omnibus}
+	\end{table}
+	
+	\subsection*{Question}	
+	\textit{Explain the differences seen in the peak-to-peak ripple voltage values between Circuit 3 and Circuit 1. Are they in line with your expectations? Why?}
+	
+	\subsection*{Answer}
+	The ripple is smaller in circuit 3 because the capacitor is being charged and discharged more frequently. This results in a smaller ripple voltage as seen in the above plots.
+
+\end{document}
