@@ -50,10 +50,36 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{ltgray}{rgb}{0.937, 0.937, 0.956}	% Divide standard RGB values by 255 for some reason 
 
+% PSU colors
+\definecolor{PSUgreen}{RGB}{106,127,16}
+\definecolor{PSUltgreen}{RGB}{168,180,0}
+\definecolor{PSUblue}{RGB}{0,117,154}
+\definecolor{PSUltblue}{RGB}{161,216,224}
+\definecolor{PSUgray}{RGB}{71,67,52}
+\definecolor{PSUbrown}{RGB}{96,53,29}
+\definecolor{PSUsienna}{RGB}{163,63,31}
+\definecolor{PSUred}{RGB}{210,73,42}
+\definecolor{PSUorange}{RGB}{220,155,50}
+\definecolor{PSUyellow}{RGB}{230,220,143}
+\definecolor{PSUtan}{RGB}{232,221,162}
+\definecolor{PSUpurple}{RGB}{101,3,96}
+
+
 \newenvironment{QandA}
 	{\begin{enumerate}[label=\arabic*.]\sl} % Use slanted question text and Arabic numerals
   {\end{enumerate}}
 \newenvironment{answered}{\par\normalfont}{} % Paragraph break and use normal font
+
+% fancy header / footer lines
+\usepackage{fancyhdr}% http://ctan.org/pkg/fancyhdr
+\pagestyle{fancy}% Change page style to fancy
+\fancyhf{}% Clear header/footer
+\fancyhead[L]{\textcolor{PSUgray}{ECE317}}
+\fancyhead[R]{\textcolor{PSUgray}{Project 01}}
+\fancyfoot[L]{\textcolor{PSUgray}{Brooks}}
+\fancyfoot[R]{\textcolor{PSUgray}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
 
 
 % Title Page ------------------------------------------------
@@ -109,6 +135,9 @@
 \newpage
 \pagenumbering{arabic}
 
+\section{Overview}
+The purpose of this lab is to understand the fundamental usage of PECS and determine how variations in switching frequency, clocks, and pulse width modulator affect various parts of electric circuits.
+
 \section{Circuit 1}
 	\subsection{Circuit Diagram}
 	\begin{figure}[H]	 		
@@ -149,26 +178,26 @@
 	  	\label{fig:}
 	  	\figHere{images/01_comp01.png} \figOverlay
 	  	\end{overpic}
-	  	\caption{Comparitive waveform}
+	  	\caption{Comparative waveform}
 	\end{figure}
 	
 	\subsection{Analysis}
 	\begin{table}[H]
 	\centering
-		\begin{tabular}{|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|} % Col width
+		\begin{tabular}{|M{.25\textwidth}|M{.25\textwidth}|M{.25\textwidth}|M{.25\textwidth}|} % Col width
 		\hline
 		\textbf{Peak Amplitude} & \textbf{Period} & \textbf{Pulse Width} & \textbf{Duty Ratio} \\ \hline
 		$10v$ & 10$\mu$s & 4$\mu$s & 0.4 \\ \hline
 		\end{tabular}						
 		\caption{Circuit 1 calculations}	
 	\end{table}
-	
+	f
 	\subsection*{Question}	
 	\textit{Taking the above plots into consideration, explain why you would expect to get the steady state value you found above?}
 	
 	\subsection*{Answer}
 	\begin{equation}
-	Steady\;State = Peak\;Amplitude\, \cdot \;Duty\; Ratio
+	V_{SS} = V_{peak} \cdot \;Duty\; Ratio
 	\end{equation}
 	It is expected to get the steady state above as the peak voltage is $10v$ and the duty ratio is 0.4.
 	
@@ -179,7 +208,7 @@
 	  	\label{fig:}
 	  	\figHere{images/01_circuit02.png} \figOverlay
 	  	\end{overpic}
-	  	\caption{Circuit}
+	  	\caption{Sawtooth wave circuit}
 	\end{figure}
 	
 	\begin{figure}[H]	 		
@@ -202,10 +231,10 @@
 	\subsection{Analysis}
 	\begin{table}[H]
 	\centering
-		\begin{tabular}{|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|} % Col width
+		\begin{tabular}{|M{.5\textwidth}|M{.5\textwidth}|} % Col width
 		\hline
-		\textbf{Peak Amplitude} & \textbf{Period} & \textbf{Pulse Width} & \textbf{Duty Ratio} \\ \hline
-		$10v$ & 10$\mu$s & 4$\mu$s & 0.4 \\ \hline
+		\textbf{Peak Amplitude} & \textbf{Period} \\ \hline
+		$2v$ & 200$\mu$s \\ \hline
 		\end{tabular}						
 		\caption{Circuit 2 calculations}	
 	\end{table}
@@ -224,44 +253,31 @@
 	\begin{figure}[H]	 		
 		\centering
 	  	\label{fig:}
-	  	\figHere{images/01_circuit03.png} \figOverlay
+	  	\figHere{images/01_circuit02.png} \figOverlay
 	  	\end{overpic}
-	  	\caption{Circuit}
-	\end{figure}
-	
-	\begin{figure}[H]	 		
-		\centering
-	  	\label{fig:}
-	  	\figHere{images/01_parameters03.png} \figOverlay
-	  	\end{overpic}
-	  	\caption{Simulation Parameters}
-	\end{figure}
-	
-	\subsection{Output}
-	\begin{figure}[H]	 		
-			\centering
-	  	\label{fig:}
-	  	\figHere{images/01_comp03.png} \figOverlay
-	  	\end{overpic}
-	  	\caption{Comparative waveform}
+	  	\caption{Circuit (adjusted)}
 	\end{figure}
 	
 	\subsection{Analysis}
 	\begin{table}[H]
 	\centering
-		\begin{tabular}{|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|M{.15\textwidth}|} % Col width
+		\begin{tabular}{|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|} % Col width
 		\hline
 		& \textbf{Switching Frequency} & \textbf{Duty Ratio} & \textbf{Peak-to-peak Input Voltage to Filter} & \textbf{Steady State Average Output Voltage} & \textbf{Peak-to-peak Output Voltage Ripple} \\ \hline
-		\textbf{Circuit 1} & & & & & \\ \hline
-		\textbf{Circuit 3} & & & & & \\ \hline
+		\textbf{Circuit 1} & 100kHz & 0.4 & 10v & 4v & 5.4mV \\ \hline
+		\textbf{Circuit 3} & 40kHz & 0.5 & 10v & 5v & 3.5mV \\ \hline
 		\end{tabular}						
-		\caption{Comparitive omnibus}
+		\caption{Comparative omnibus}
 	\end{table}
 	
 	\subsection*{Question}	
 	\textit{Explain the differences seen in the peak-to-peak ripple voltage values between Circuit 3 and Circuit 1. Are they in line with your expectations? Why?}
 	
 	\subsection*{Answer}
+	\begin{equation}
+	K_1(V_{P1})+K_3 < 0
+	\end{equation}
+	
 	The ripple is smaller in circuit 3 because the capacitor is being charged and discharged more frequently. This results in a smaller ripple voltage as seen in the above plots.
 
 \end{document}
