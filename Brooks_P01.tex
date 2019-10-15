@@ -111,7 +111,7 @@
 		\normalsize Kai Brooks
 		
 		\vspace{0.5cm}
-		Lab TA: N/A
+		%Lab TA: N/A
 		
 		\vfill
 		\vspace{0.8cm}
@@ -187,7 +187,7 @@ The purpose of this lab is to understand the fundamental usage of PECS and deter
 		\begin{tabular}{|M{.25\textwidth}|M{.25\textwidth}|M{.25\textwidth}|M{.25\textwidth}|} % Col width
 		\hline
 		\textbf{Peak Amplitude} & \textbf{Period} & \textbf{Pulse Width} & \textbf{Duty Ratio} \\ \hline
-		$10v$ & 10$\mu$s & 4$\mu$s & 0.4 \\ \hline
+		10V & 10$\mu$s & 4$\mu$s & 0.4 \\ \hline
 		\end{tabular}						
 		\caption{Circuit 1 calculations}	
 	\end{table}
@@ -199,7 +199,7 @@ The purpose of this lab is to understand the fundamental usage of PECS and deter
 	\begin{equation}
 	V_{SS} = V_{peak} \cdot \;Duty\; Ratio
 	\end{equation}
-	It is expected to get the steady state above as the peak voltage is $10v$ and the duty ratio is 0.4.
+	It is expected to get the steady state above as the peak voltage is 10V and the duty ratio is 0.4.
 	
 \section{Circuit 2}
 	\subsection{Circuit Diagram}
@@ -234,7 +234,7 @@ The purpose of this lab is to understand the fundamental usage of PECS and deter
 		\begin{tabular}{|M{.5\textwidth}|M{.5\textwidth}|} % Col width
 		\hline
 		\textbf{Peak Amplitude} & \textbf{Period} \\ \hline
-		$2v$ & 200$\mu$s \\ \hline
+		2V & 200$\mu$s \\ \hline
 		\end{tabular}						
 		\caption{Circuit 2 calculations}	
 	\end{table}
@@ -243,10 +243,7 @@ The purpose of this lab is to understand the fundamental usage of PECS and deter
 	\textit{Given that $K_1 = -1$, what other factors in the circuit determines the peak amplitude and why?}
 	
 	\subsection*{Answer}
-	\begin{equation}
-	Steady\;State = Peak\;Amplitude\, \cdot \;Duty\; Ratio
-	\end{equation}
-	It is expected to get the steady state above as the peak voltage is $10v$ and the duty ratio is 0.4.
+	The value of $K_3$, as the cap charge is negative in the summing equation, when the value exceeds $K_3$ the circuit generates a clock signal and the cap discharges.
 	
 \section{Circuit 3}
 	\subsection{Circuit Diagram}
@@ -264,8 +261,8 @@ The purpose of this lab is to understand the fundamental usage of PECS and deter
 		\begin{tabular}{|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|M{.16\textwidth}|} % Col width
 		\hline
 		& \textbf{Switching Frequency} & \textbf{Duty Ratio} & \textbf{Peak-to-peak Input Voltage to Filter} & \textbf{Steady State Average Output Voltage} & \textbf{Peak-to-peak Output Voltage Ripple} \\ \hline
-		\textbf{Circuit 1} & 100kHz & 0.4 & 10v & 4v & 5.4mV \\ \hline
-		\textbf{Circuit 3} & 40kHz & 0.5 & 10v & 5v & 3.5mV \\ \hline
+		\textbf{Circuit 1} & 100kHz & 0.4 & 10V & 4V & 540$\mu$V \\ \hline
+		\textbf{Circuit 3} & 40kHz & 0.5 & 10V & 5V & 3.5mV \\ \hline
 		\end{tabular}						
 		\caption{Comparative omnibus}
 	\end{table}
