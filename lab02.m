@@ -1,4 +1,4 @@
-% TSP Comps
+% 317 things
 % Kai Brooks
 % github.com/kaibrooks
 % 2019
