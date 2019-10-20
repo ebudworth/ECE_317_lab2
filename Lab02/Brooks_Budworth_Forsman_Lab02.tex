@@ -1,0 +1,261 @@
+% ECE317 Project 02
+% Kai Brooks,  Eric Budworth, Andrew Forsman
+% Fall 2019
+
+% Document settings ------------------------------------------------
+\documentclass[a4paper,12pt]{article}
+
+\newcommand{\figOverlay}{\put(34,10){\color{black!50} \figWatermark}} % Figure overlay settings
+\newcommand{\figWatermark}{}%\small Brooks \today} 		% Figure overlay text
+\newcommand{\figHere}{\begin{overpic}[percent,scale=0.34]}	% Settings for all figures
+
+% Packages ------------------------------------------------
+
+\usepackage[USenglish]{babel} 	% American English
+\usepackage{blindtext}			% Generate latin crap
+\usepackage[yyyymmdd]{datetime} % Sets date format to ISO 8601 standard
+\renewcommand{\dateseparator}{-}% Sets date format to ISO 8601 standard
+
+\usepackage{graphicx}			% Image importing and display
+\graphicspath{ {images/} }		% Path to image folder
+\usepackage{xcolor}				% Allows normal color words
+\usepackage{color, colortbl}
+
+
+\usepackage{float}				% Adds 'H' for figure placement location
+\usepackage{enumitem}			% Use for QandA environment
+\usepackage{booktabs}			% Merging columns in tables
+
+\usepackage[firstpage]{draftwatermark}	% use [nostamp] when finished, [firstpage] otherwise
+\SetWatermarkText{DRAFT}
+\SetWatermarkColor{red!50}
+\SetWatermarkScale{3}
+
+
+\usepackage{overpic}				% Puts text over figures
+\usepackage[american]{circuitikz}	% American-style circuit diagrams
+
+\usepackage{amsmath}				% Multi-line equations
+\usepackage{caption}				% Equation caption formatting
+\usepackage{physics}				% Easier derivatives
+\usepackage{gensymb}				% Enable \degree for degree symbol
+\usepackage{siunitx}				% SI units
+
+
+\usepackage{array}					% Used for centering tabular data
+\newcolumntype{M}[1]{>{\centering\arraybackslash}p{#1}} % The actual centered column format
+
+\usepackage{listings} %For code in appendix
+
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{ltgray}{rgb}{0.937, 0.937, 0.956}	% Divide standard RGB values by 255 for some reason 
+
+% PSU colors
+\definecolor{PSUgreen}{RGB}{106,127,16}
+\definecolor{PSUltgreen}{RGB}{168,180,0}
+\definecolor{PSUblue}{RGB}{0,117,154}
+\definecolor{PSUltblue}{RGB}{161,216,224}
+\definecolor{PSUgray}{RGB}{71,67,52}
+\definecolor{PSUbrown}{RGB}{96,53,29}
+\definecolor{PSUsienna}{RGB}{163,63,31}
+\definecolor{PSUred}{RGB}{210,73,42}
+\definecolor{PSUorange}{RGB}{220,155,50}
+\definecolor{PSUyellow}{RGB}{230,220,143}
+\definecolor{PSUtan}{RGB}{232,221,162}
+\definecolor{PSUpurple}{RGB}{101,3,96}
+
+
+\newenvironment{QandA}
+	{\begin{enumerate}[label=\arabic*.]\sl} % Use slanted question text and Arabic numerals
+  {\end{enumerate}}
+\newenvironment{answered}{\par\normalfont}{} % Paragraph break and use normal font
+
+% fancy header / footer lines
+\usepackage{fancyhdr}% http://ctan.org/pkg/fancyhdr
+\pagestyle{fancy}% Change page style to fancy
+\fancyhf{}% Clear header/footer
+\fancyhead[L]{\textcolor{PSUgray}{ECE317}}
+\fancyhead[R]{\textcolor{PSUgray}{Project 02}}
+\fancyfoot[L]{\textcolor{PSUgray}{Brooks, Budworth, Forsman}}
+\fancyfoot[R]{\textcolor{PSUgray}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}% Default \headrulewidth is 0.4pt
+\renewcommand{\footrulewidth}{0.4pt}% Default \footrulewidth is 0pt
+
+
+% Title Page ------------------------------------------------
+\begin{document}
+\lstset { %Formatting for code in appendix
+  language=Matlab,
+  basicstyle=\footnotesize\ttfamily,
+  numbers=left,
+  stepnumber=1,
+  showstringspaces=false,
+  tabsize=1,
+  breaklines=true,
+  breakatwhitespace=false,
+  stringstyle=\color{mymauve},
+  keywordstyle=\color{blue},
+  commentstyle=\color{mygreen}, 
+}
+
+\begin{titlepage}
+	\begin{center}
+		\vspace*{1cm}
+
+		\huge\textsc{Project 02}
+
+		\vspace{0.5cm}
+		\small\textsc{ECE 317}
+		
+		\vspace{1.5cm}
+		\normalsize Kai Brooks, Eric Budworth, Andrew Forsman
+		
+		\vspace{0.5cm}
+		%Lab TA: N/A
+		
+		\vfill
+		\vspace{0.8cm}
+		
+		\includegraphics[width=0.5\textwidth]{images/psulogo_horiz_msword.tif}
+		
+		\vspace{0.5cm}
+		Electrical and Computer Engineering\\
+		Portland State University\\
+		\today
+		 
+	\end{center}
+\end{titlepage}
+
+% Table of contents ------------------------------------------------
+\newpage
+\tableofcontents
+
+
+% Begin paper ------------------------------------------------
+\newpage
+\pagenumbering{arabic}
+
+\section{Overview}
+The purpose of this lab is to do a thing.
+
+\section{Calculations}
+	\subsection{PECS Simulation}
+
+Calculations from Tasks 5 - 8:
+\begin{align}
+\begin{split}\label{eq:1}
+	c_{max} &={} \SI{5.93085}{\volt} - \SI{5}{\volt} \\
+	c_{max} &={} \SI{0.93085}{\volt}
+\end{split}
+\end{align}
+
+\begin{align}
+\begin{split}\label{eq:2}
+	c_{final} &= \SI{5.5}{\volt} - \SI{5}{\volt} \\
+	c_{final} &= \SI{0.5}{\volt}
+\end{split}	
+\end{align} 
+
+$\%OS = \frac{\SI{0.93085}{\volt}-\SI{0.5}{\volt}}{\SI{0.5}{\volt}} \cdot 100$\\
+
+$\%OS =  86.17\%$\\
+
+$\zeta = \frac{-ln(86.17/100)}{\sqrt{\pi^2+ln^2(86.17/100)}}$\\
+
+$\zeta = 0.047327$\\
+
+$\SI{0.5}{\volt}*0.02 = \SI{0.01}{\volt}$\\
+ 
+$c_{final}\pm 2\% = \SI{0.5}{\volt} \pm\SI{0.01}{\volt}$\\
+ 
+$c_{final}'\pm 2\% = \SI{5.501}{\volt} \:\textrm{and} \: \SI{5.499}{\volt}$\\
+ 
+$T_s = \SI{0.140627}{\second} - \SI{0.11}{\second}$\\
+ 
+$T_s = \SI{0.030627}{\second}$\\
+
+$\omega_n  = \frac{4}{0.047327 \cdot 0.030627}$\\
+
+$\omega_n  = (something) $
+
+$K = \frac{\SI{5.5}{\volt} - \SI{5}{\volt}}{\SI{5.5}{\volt} - \SI{5}{\volt}}$\\
+ 
+$K = 1$
+
+\subsection{MATLAB}
+
+Derivation of Transfer Function, symbolically:\\
+
+$Z_{RC} = (1/R+Cs)^{-1}$\\
+
+$Z_{RC} = \frac{R}{sRC+1}$\\
+
+$Z_{EQ} = Ls + Z_{RC}$\\
+
+$Z_{EQ} = \frac{RLCs^2+Ls+R}{RCs+1}$\\
+
+$V_{\textrm{out}} = V_{\textrm{in}} \cdot \frac{Z_{RC}}{Z_{EQ}}$\\
+
+$\frac{V_{\textrm{out}}}{V_{\textrm{in}}} = \frac{R}{RLCs^2+Ls+R}$\\
+
+$G(s) = \frac{1}{LCs^2+\frac{L}{R}s+1}$\\
+
+So, we can see $a_1 = L/R$ and $a_2 = LC$.\\
+
+$a_1 = \frac{560\mu}{25}\\$
+
+$\;\;\;\;\: = 22.4\mu$\\
+
+and\\
+
+$a_2 = 560\mu \cdot100\mu$ \\
+
+$\;\;\;\;\: = 56n$\\
+
+To determine the values for K, $\zeta$, and $\omega_n$:\\
+
+$\omega_n  = \frac{1}{\sqrt{a_2}}$\\
+
+$\;\;\;\;\;= 4.2258 \frac{rad}{sec} $
+
+
+	
+	% old stuff
+	
+\section{Circuit 2}
+	\subsection{Circuit Diagram}
+	\begin{figure}[H]	 		
+		\centering
+	  	\label{fig:}
+	  	\figHere{images/kitty.jpg} \figOverlay
+	  	\end{overpic}
+	  	\caption{nyaaaaan}
+	\end{figure}
+
+	\subsection{Analysis}
+	\begin{table}[H]
+	\centering
+		\begin{tabular}{|M{.5\textwidth}|M{.5\textwidth}|} % Col width
+		\hline
+		\textbf{Peak Amplitude} & \textbf{Period} \\ \hline
+		2V & 200$\mu$s \\ \hline
+		\end{tabular}						
+		\caption{Circuit 2 calculations}	
+	\end{table}
+	
+	\begin{QandA}
+
+	\section{Questions}
+	\item How does it work?
+		\begin{answered}
+			Black magic	
+		\end{answered}
+
+	\end{QandA}	
+	
+	\section{MATLAB Code}
+	\lstinputlisting[language=Matlab]{simulations/lab02.m}
+
+\end{document}
