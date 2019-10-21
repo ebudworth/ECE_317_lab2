@@ -18,8 +18,8 @@ R = 25;
 
 % tf parameters k, a1, a2, as functions of L,C,R
 K = 1;      % tf dc gain 
-a1 = 1;     % coeffecient of s^1 in denominator polynomial 
-a2 = 1;     % coeffecient of s^2 in denominator polynomial 
+a1 = 22.4e-6;     % coeffecient of s^1 in denominator polynomial 
+a2 = 56e-9;     % coeffecient of s^2 in denominator polynomial 
 
 tf_LCR = tf(K, [a2, a1, 1]); % tf of rlc network
 
