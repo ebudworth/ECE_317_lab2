@@ -32,6 +32,8 @@
 \SetWatermarkScale{3}
 
 
+
+
 \usepackage{overpic}				% Puts text over figures
 \usepackage[american]{circuitikz}	% American-style circuit diagrams
 
@@ -118,7 +120,7 @@
 		\vfill
 		\vspace{0.8cm}
 		
-		\includegraphics[width=0.5\textwidth]{images/psulogo_horiz_msword.tif}
+		\includegraphics[width=0.5\textwidth]{images/psulogo_horiz_msword.png}
 		
 		\vspace{0.5cm}
 		Electrical and Computer Engineering\\
@@ -138,7 +140,7 @@
 \pagenumbering{arabic}
 
 \section{Overview}
-The purpose of this lab is to do a thing.
+The purpose of this lab is too build a passive LRC Bandpass filter, and evaluate its output signal in relation to its components and transform function. We began by building the given circuit in PECS, and program a step function that increases the input voltage by 10\%. We then plot the output funtion of this circuit, and view how the step function effects the output voltage. We were looking for the maximum oscillation output ($c_{max}$), the percent overshoot (\%OS), the settling time ($T_s$), damping ratio($\zeta$), the natural frequency($\omega_n$) and the gain (K). We then find the transfer function, and derive the natural frequency, the damping ratio, and the gain.
 
 \section{Calculations}
 	\subsection{PECS Simulation}
@@ -170,15 +172,15 @@ $\SI{0.5}{\volt}*0.02 = \SI{0.01}{\volt}$\\
  
 $c_{final}\pm 2\% = \SI{0.5}{\volt} \pm\SI{0.01}{\volt}$\\
  
-$c_{final}'\pm 2\% = \SI{5.501}{\volt} \:\textrm{and} \: \SI{5.499}{\volt}$\\
+$c_{final}'\pm 2\% = \SI{5.51}{\volt} \:\textrm{and} \: \SI{5.49}{\volt}$\\
  
-$T_s = \SI{0.129419}{\second} - \SI{0.11}{\second}$\\
+$T_s = \SI{0.130084}{\second} - \SI{0.11}{\second}$\\
  
-$T_s = \SI{0.019419}{\second}$\\
+$T_s = \SI{0.0200840}{\second}$\\
 
-$\omega_n  = \frac{4}{0.047327 \cdot 0.019419}$\\
+$\omega_n  = \frac{4}{0.047327 \cdot 0.0200840}$\\
 
-$\omega_n  = \SI{4352.3}{\frac{\radian}{\second}} $
+$\omega_n  = \SI{4208.24}{\frac{\radian}{\second}} $
 
 $K = \frac{\SI{5.5}{\volt} - \SI{5}{\volt}}{\SI{5.5}{\volt} - \SI{5}{\volt}}$\\
  
@@ -218,7 +220,12 @@ To determine the values for K, $\zeta$, and $\omega_n$:\\
 
 $\omega_n  = \frac{1}{\sqrt{a_2}}$\\
 
-$\;\;\;\;\;= \SI{4225.8}{\frac{rad}{sec}}$
+$\;\;\;\;\;= \SI{4225.8}{\frac{rad}{sec}}$\\
+
+$\zeta = \frac{a_1}{2a_2\omega_n}$\\
+
+$\;\;\;\;\;= \SI{0.047329}$\\
+
 
 
 	
@@ -226,36 +233,67 @@ $\;\;\;\;\;= \SI{4225.8}{\frac{rad}{sec}}$
 	
 \section{Circuit 2}
 	\subsection{Circuit Diagram}
-	\begin{figure}[H]	 		
+	\begin{figure}[H]
+
 		\centering
 	  	\label{fig:}
-	  	\figHere{images/kitty.jpg} \figOverlay
+	  	\figHere{images/Circuit.png} \figOverlay
 	  	\end{overpic}
-	  	\caption{nyaaaaan}
+	  	\caption{Circuit Diagram}
 	\end{figure}
 
 	\subsection{Analysis}
+	
 	\begin{table}[H]
 	\centering
-		\begin{tabular}{|M{.5\textwidth}|M{.5\textwidth}|} % Col width
+		\begin{tabular}{|M{.25\textwidth}|M{.25\textwidth}| M{.25\textwidth} | M{.25\textwidth} |} % Col width
 		\hline
-		\textbf{Peak Amplitude} & \textbf{Period} \\ \hline
-		2V & 200$\mu$s \\ \hline
+		\textbf{Transfer Function Parameters}  & \textbf{PECS Simulation Derived values From Tasks 6, 7, \& 8)}   & \textbf{From Transfer Function Derivation: Symbolic Form}     & \textbf{From Transfer Function Derivation: Evaluated}  \\ \hline
+		$\zeta$         & 0.047327  &         $\frac{1}{2RC\omega_n}$          &  0.047329 \\ \hline
+		$\omega_{n}$  & $\SI{4352.3}{\frac{\radian}{\second}}$      & $\frac{1}{\sqrt{a_2}}$    & $\SI{4225.8}{\frac{rad}{sec}}$  \\ \hline
+		K           & 1     &                                   & 1  \\ \hline
 		\end{tabular}						
-		\caption{Circuit 2 calculations}	
+		\caption{Matlab Simulations Results Check}	
 	\end{table}
 	
-	\begin{QandA}
+	
+		\begin{table}[H]
+	\centering
+		\begin{tabular}{|M{.25\textwidth}|M{.25\textwidth}| M{.25\textwidth} | } % Col width
+		\hline
+		\textbf{Response Feature} & \textbf{From PECS Simulation} & \textbf{From Matlab Function \textit{stepinfo}}   \\  \hline
+		\% Overshoot (\% OS)         &   86.17\%       & 83.74\%  \\ \hline
+		Settling Time, \textit{$T_{s}$}  & 20.084 ms      & 18.8 ms      \\ \hline
+		\end{tabular}						
+		\caption{PECS versus Matlab}	
+	\end{table}
+	
+
 
 	\section{Questions}
-	\item How does it work?
+	After adding a resistor $r_{L}$ in series with the inductor L, state your observations. Does it (substantially) change any of the following of the transfer function: DC Gain, Undamped natural frequency, Damping Factor?
+	
+	
+		\begin{QandA}
+		
+	\item DC Gain?
 		\begin{answered}
-			Black magic	
+				
 		\end{answered}
+		
+	\item Undamped natural frequency?
+	    \begin{answered}
+	    
+	    \end{answered}
 
+    \item Damping Factor?
+        \begin{answered}
+        
+        \end{answered}
 	\end{QandA}	
 	
 	\section{MATLAB Code}
 	\lstinputlisting[language=Matlab]{simulations/lab02.m}
 
 \end{document}
+
